@@ -15,11 +15,13 @@ app.controller('HomeController', function ($scope) {
       id: 2,
       body:' Bacon ipsum dolor amet landjaeger chuck meatball chicken hamburger porchetta cow ball tip, turducken capicola rump pork chop boudin short loin salami. Tongue picanha flank meatloaf, strip steak beef leberkas landjaeger shank boudin. Andouille pig kielbasa, tenderloin cupim rump meatball drumstick. Salami pork tongue, turkey biltong shank filet mignon tri-tip corned beef ham.',
       votes: {
-        upVote: 0,
+        upVote: 1,
         downVote: 0,
       },
     }],
   };
+
+  $scope.sort = 'post.upVote';
 
   $scope.posts.latestID = 1;
   $scope.action = {};
@@ -58,11 +60,15 @@ app.controller('HomeController', function ($scope) {
     $scope.posts.postArray.splice(index, 1);
   };
 
+  $scope.action.editPost = function (post) {
+    // edit logic
+  };
+
   $scope.action.showSearch = function () {
     $scope.posts.searching = !$scope.posts.searching;
   };
 
-  $scope.action.search = function (searchWord) {
+  $scope.action.search = function (searchWord) { // onChange
     // search logic
     var word = searchWord.toLowerCase();
     $scope.posts.postArray.forEach(function (obj) {

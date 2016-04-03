@@ -40,6 +40,11 @@ main {
   width: 60%;
   margin: auto; }
 
+.search input {
+  text-align: center;
+  width: 50%;
+  margin: auto; }
+
 #individual-post {
   width: 60%;
   margin: auto;

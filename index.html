@@ -30,17 +30,19 @@
 
         <section class="search" ng-show="posts.searching===true">
           <h3>Search: </h3><input type="text" placeholder="words and words" ng-model="searchWord">
+          <hr>
         </section>
-        {{ searchWord }}
+
         <section class="orderBy">
           <h3>Order By:</h3>
           <select ng-model="sort">
-            <option value="votes.upVote">votes</option>
+            <option value="post.votes.upVote">up votes</option>
+            <option value="post.votes.downVote">down votes</option>
             <option value="date">date</option>
           </select>
         </section>
       <br>
-          <section id="individual-post" ng-repeat="post in posts.postArray | orderBy : sort">
+          <section id="individual-post" ng-repeat="post in posts.postArray | orderBy: (sort)">
             <div class="individual-post">
               <ul>
                 <li>{{ post.username }}</li>
