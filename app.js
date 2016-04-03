@@ -21,7 +21,7 @@ app.controller('HomeController', function ($scope) {
     }],
   };
 
-  $scope.sort = 'post.upVote';
+  $scope.sort = 'upVote';
 
   $scope.posts.latestID = 1;
   $scope.action = {};

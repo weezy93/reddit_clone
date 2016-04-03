@@ -3,7 +3,6 @@ body {
   display: flex;
   flex-direction: column;
   font-family: monospace;
-  margin: 0;
   padding: 0; }
 
 nav {
@@ -12,6 +11,10 @@ nav {
   background-color: rgba(17, 101, 97, 0.84);
   display: flex;
   margin-bottom: 2rem; }
+
+main {
+  display: flex;
+  width: 100%; }
 
 ul {
   font-size: 2rem;
@@ -25,10 +28,6 @@ li {
   text-decoration: none;
   color: white;
   cursor: pointer; }
-
-main {
-  display: flex;
-  width: 100%; }
 
 #posts {
   display: flex;
@@ -70,7 +69,9 @@ main {
   margin: auto; }
 
 .individual-post ul {
+  width: 50%;
   padding-left: 0;
+  margin-left: auto;
   margin-bottom: .5rem; }
 
 i {

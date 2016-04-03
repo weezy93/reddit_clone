@@ -16,23 +16,26 @@
     </nav>
 
     <main>
-      <form ng-show="posts.makePost">
-        <label for="username">UserName</label>
-        <input type="text" placeholder="@doge" ng-model="postBody.username">
-        <br>
-        <label for="body"></label>
-        <textarea id='body' rows="8" cols="40" ng-model="postBody.body">Say some stuff</textarea>
-        <br>
-        <button type="submit" ng-click="action.createPost(postBody)">post!</button>
-      </form>
-
+<!-- Create Post -->
+      <article class="createPost">
+        <form class="createPostForm" ng-show="posts.makePost">
+          <label for="username">UserName</label>
+          <input type="text" placeholder="@doge" ng-model="postBody.username">
+          <br>
+          <label for="body"></label>
+          <textarea id='body' rows="8" cols="40" ng-model="postBody.body">Say some stuff</textarea>
+          <br>
+          <button type="submit" ng-click="action.createPost(postBody)">post!</button>
+        </form>
+      </article>
+<!-- view all posts -->
       <article id="posts" ng-show="posts.makePost === false">
 
         <section class="search" ng-show="posts.searching===true">
           <h3>Search: </h3><input type="text" placeholder="words and words" ng-model="searchWord">
           <hr>
         </section>
-
+    <!-- orderBy select -->
         <section class="orderBy">
           <h3>Order By:</h3>
           <select ng-model="sort">
@@ -42,7 +45,8 @@
           </select>
         </section>
       <br>
-          <section id="individual-post" ng-repeat="post in posts.postArray | orderBy: (sort)">
+      <!-- single post -->
+          <section id="individual-post" ng-repeat="post in posts.postArray | orderBy: sort">
             <div class="individual-post">
               <ul>
                 <li>{{ post.username }}</li>
