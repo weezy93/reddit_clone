@@ -1,39 +1,32 @@
 <!DOCTYPE html>
-<html ng-app="RedditClone">
+<html ng-app="RedditClone" ng-cloak>
   <head>
     <meta charset="utf-8">
     <title>Reddit Clone App</title>
     <link rel="stylesheet" href="/styles/css/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
-  <body>
+  <body ng-controller="HomeController">
     <nav>
       <ul>
-        <li>home</li>
-        <li ng-click="posts.showPostForm()">post</li>
+        <li ng-click="hidePostForm()">home</li>
+        <li ng-click="showPostForm()">post</li>
       </ul>
     </nav>
 
     <main>
       <form ng-show="posts.makePost">
         <label for="username">UserName</label>
-        <input type="text" placeholder="@doge" ng-model="posts.postBody.username">
+        <input type="text" placeholder="@doge" ng-model="postBody.username">
         <br>
         <label for="body"></label>
-        <textarea id='body' rows="8" cols="40" ng-model="posts.postBody.body">Say some stuff</textarea>
+        <textarea id='body' rows="8" cols="40" ng-model="postBody.body">Say some stuff</textarea>
         <br>
-        <button ng-click"posts.createPost()">BUTTON</button>
-
+        <button ng-click"createPost(postBody)">post!</button>
       </form>
-
-      </form>
-
-
-
-
-      {{ posts[0] }}
-      <p ng-controller="PostController">
-        {{ apple }}
+    <hr>
+      <p ng-show="makePost === false">
+        {{ posts.postArray[0] }}
       </p>
     </main>
 
