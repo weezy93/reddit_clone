@@ -3,22 +3,27 @@
 // @import "bitters/base";
 // @import "bitters/lists";
 
+$red: #e81616;
+$teal: rgba(17, 101, 97, 0.84);
+
 body {
   font-size: 16px;
   display: flex;
   flex-direction: column;
   font-family: monospace;
+  margin: 0;
+  padding: 0;
 }
 nav {
   width: 100%;
   height: 20vh;
-  background-color: rgba(17, 101, 97, 0.84);
+  background-color: $teal;
   display: flex;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 ul {
-  font-size: 3rem;
+  font-size: 2rem;
   display: flex;
   list-style: none;
   margin: auto;
@@ -43,18 +48,24 @@ main {
   flex-flow: column;
 }
 
-.orderBy {
+.search, .orderBy {
   text-align: center;
   width: 60%;
   margin: auto;
 }
 
+#individual-post {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 2rem;
+  display: flex;
+}
+
 .individual-post {
    display: flex;
+   flex-flow: column;
    width: 60%;
    margin: auto;
-  //  border-bottom: 1px solid;
-   margin-bottom: 2rem;
 }
 
 .individual-post p {
@@ -63,26 +74,34 @@ main {
   font-size: .6rem;
 }
 
-.individual-post>div {
-  width: 20%;
-  text-align: center;
-  display: flex;
-  flex-flow: column;
-}
-
-.individual-post h5 {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-}
-
-.icons {
+.individual-post ul, .individual-post li {
+  font-size: .8rem;
+  color: black;
+  list-style: none;
   display: inline-block;
-  width: auto;
-  text-align: center;
+  margin: auto;
+}
+
+.individual-post ul {
+  padding-left: 0;
+  margin-bottom: .5rem;
 }
 
 i {
   cursor: pointer;
   margin-right: .5rem;
 }
+
+.deletePost, .editPost {
+  color: white;
+}
+
+.deletePost {
+  background-color: $red;
+}
+
+.editPost {
+  background-color: $teal;
+}
+
 // node-sass -o styles/css -wr styles/scss

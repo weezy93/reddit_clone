@@ -1,17 +1,23 @@
 window.app = angular.module('RedditClone', [/* messages and time dependecies */]);
 
 app.controller('HomeController', function ($scope) {
-  $scope.posts = { makePost: false,
+  $scope.posts = { makePost: false, searching: false,
     postArray: [{
       username: '@doge',
       id: 1,
       body:' Bacon ipsum dolor amet landjaeger chuck meatball chicken hamburger porchetta cow ball tip, turducken capicola rump pork chop boudin short loin salami. Tongue picanha flank meatloaf, strip steak beef leberkas landjaeger shank boudin. Andouille pig kielbasa, tenderloin cupim rump meatball drumstick. Salami pork tongue, turkey biltong shank filet mignon tri-tip corned beef ham.',
-      votes: 0,
+      votes: {
+        upVote: 0,
+        downVote: 0,
+      },
     },{
       username: '@catt',
       id: 2,
       body:' Bacon ipsum dolor amet landjaeger chuck meatball chicken hamburger porchetta cow ball tip, turducken capicola rump pork chop boudin short loin salami. Tongue picanha flank meatloaf, strip steak beef leberkas landjaeger shank boudin. Andouille pig kielbasa, tenderloin cupim rump meatball drumstick. Salami pork tongue, turkey biltong shank filet mignon tri-tip corned beef ham.',
-      votes: 0,
+      votes: {
+        upVote: 0,
+        downVote: 0,
+      },
     }],
   };
 
@@ -35,13 +41,38 @@ app.controller('HomeController', function ($scope) {
 
   $scope.action.upVote = function (post) {
     var index = $scope.posts.postArray.indexOf(post);
-    $scope.posts.postArray[index].votes++;
+    $scope.posts.postArray[index].votes.upVote++;
+
     console.log($scope.posts.postArray[index].votes);
   };
 
   $scope.action.downVote = function (post) {
     var index = $scope.posts.postArray.indexOf(post);
-    $scope.posts.postArray[index].votes--;
+    $scope.posts.postArray[index].votes.downVote++;
+
     console.log($scope.posts.postArray[index].votes);
+  };
+
+  $scope.action.deletePost = function (post) {
+    var index = $scope.posts.postArray.indexOf(post);
+    $scope.posts.postArray.splice(index, 1);
+  };
+
+  $scope.action.showSearch = function () {
+    $scope.posts.searching = !$scope.posts.searching;
+  };
+
+  $scope.action.search = function (searchWord) {
+    // search logic
+    var word = searchWord.toLowerCase();
+    $scope.posts.postArray.forEach(function (obj) {
+      if (obj.username.indexOf(word) !== -1) {
+        // sort
+      } else if (obj.body.indexOf(word) !== -1) {
+        // sort
+      } else {
+        // show nothing
+      }
+    });
   };
 });

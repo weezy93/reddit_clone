@@ -11,6 +11,7 @@
       <ul>
         <li ng-click="action.hidePostForm()">home</li>
         <li ng-click="action.showPostForm()">post</li>
+        <li ng-click="action.showSearch()">search</li>
       </ul>
     </nav>
 
@@ -27,24 +28,32 @@
 
       <article id="posts" ng-show="posts.makePost === false">
 
+        <section class="search" ng-show="posts.searching===true">
+          <h3>Search: </h3><input type="text" placeholder="words and words" ng-model="searchWord">
+        </section>
+        {{ searchWord }}
         <section class="orderBy">
           <h3>Order By:</h3>
           <select ng-model="sort">
-            <option value="votes">votes</option>
+            <option value="votes.upVote">votes</option>
             <option value="date">date</option>
           </select>
         </section>
       <br>
-          <section class="individual-post" ng-repeat="post in posts.postArray | orderBy : sort">
-            <p>{{ post.body }}</p>
+          <section id="individual-post" ng-repeat="post in posts.postArray | orderBy : sort">
+            <div class="individual-post">
+              <ul>
+                <li>{{ post.username }}</li>
+                <li><i class="fa fa-thumbs-up" ng-click="action.upVote(post)"></i></li>
+                <li><i class="fa fa-thumbs-down" ng-click="action.downVote(post)"></i></li>
+                <li><button class="deletePost" ng-click="action.deletePost(post)">delete</button></li>
+                <li><button class="editPost" ng-click="action.editPost(post)">edit</button></li>
+              </ul>
 
-            <div>
-              <h5>{{ post.username }} {{ post.votes }}</h5>
-            <!-- <br> -->
-            <div class="icons">
-              <i class="fa fa-thumbs-up" ng-click="action.upVote(post)"></i><i class="fa fa-thumbs-down" ng-click="action.downVote(post)"></i>
+              <p>{{ post.body }}</p>
             </div>
-            </div>
+        <br>
+
         </section>
 
       </article>
