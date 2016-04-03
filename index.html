@@ -9,8 +9,8 @@
   <body ng-controller="HomeController">
     <nav>
       <ul>
-        <li ng-click="hidePostForm()">home</li>
-        <li ng-click="showPostForm()">post</li>
+        <li ng-click="action.hidePostForm()">home</li>
+        <li ng-click="action.showPostForm()">post</li>
       </ul>
     </nav>
 
@@ -22,12 +22,32 @@
         <label for="body"></label>
         <textarea id='body' rows="8" cols="40" ng-model="postBody.body">Say some stuff</textarea>
         <br>
-        <button ng-click"createPost(postBody)">post!</button>
+        <button type="submit" ng-click="action.createPost(postBody)">post!</button>
       </form>
-    <hr>
-      <p ng-show="makePost === false">
-        {{ posts.postArray[0] }}
-      </p>
+
+      <article id="posts" ng-show="posts.makePost === false">
+
+        <section class="orderBy">
+          <h3>Order By:</h3>
+          <select ng-model="sort">
+            <option value="votes">votes</option>
+            <option value="date">date</option>
+          </select>
+        </section>
+      <br>
+          <section class="individual-post" ng-repeat="post in posts.postArray | orderBy : sort">
+            <p>{{ post.body }}</p>
+
+            <div>
+              <h5>{{ post.username }} {{ post.votes }}</h5>
+            <!-- <br> -->
+            <div class="icons">
+              <i class="fa fa-thumbs-up" ng-click="action.upVote(post)"></i><i class="fa fa-thumbs-down" ng-click="action.downVote(post)"></i>
+            </div>
+            </div>
+        </section>
+
+      </article>
     </main>
 
 
