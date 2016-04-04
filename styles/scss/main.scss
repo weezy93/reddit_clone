@@ -4,8 +4,10 @@
 // @import "bitters/lists";
 
 
-$red: #e81616;
+$red: #981b1b;
+$gold: rgb(235, 188, 48);
 $teal: rgba(17, 101, 97, 0.84);
+$grey: #2f2f2f;
 
 body {
   font-size: 16px;
@@ -16,8 +18,8 @@ body {
 }
 nav {
   width: 100%;
-  height: 20vh;
-  background-color: $teal;
+  height: 12vh;
+  background-color: $grey;
   display: flex;
   margin-bottom: 2rem;
 }
@@ -35,13 +37,22 @@ ul {
   width: 80%;
 }
 
-li  {
+nav ul li  {
   margin: auto;
   text-decoration: none;
   color: white;
   cursor: pointer;
 }
 
+.fa.fa-optin-monster {
+  font-size: 3rem;
+}
+
+.bar {
+  font-size: 2rem;
+}
+
+//  start body
 #posts {
   display: flex;
   width: 100%;
@@ -61,23 +72,31 @@ li  {
 }
 
 #individual-post {
-  width: 60%;
+  width: 70%;
   margin: auto;
   margin-bottom: 2rem;
   display: flex;
 }
 
+#individual-post img {
+  width: 40%;
+  margin: auto;
+  height: 80%;
+  cursor: pointer;
+}
+
 .individual-post {
    display: flex;
    flex-flow: column;
-   width: 60%;
+   width: 55%;
    margin: auto;
 }
 
 .individual-post p {
   width: 80%;
   margin: auto;
-  font-size: .6rem;
+  font-size: .8rem;
+  cursor: pointer;
 }
 
 .individual-post ul, .individual-post li {
@@ -89,10 +108,18 @@ li  {
 }
 
 .individual-post ul {
-  width: 50%;
+  width: 80%;
   padding-left: 0;
   margin-left: auto;
   margin-bottom: .5rem;
+}
+
+.fa-thumbs-up {
+  color: $teal;
+}
+
+.fa-thumbs-down {
+  color: $gold;
 }
 
 i {
@@ -113,7 +140,7 @@ i {
 }
 
 #createPost * {
-  width: 50%;
+  width: 70%;
   margin: auto;
   display: flex;
   flex-flow: column;
@@ -123,9 +150,8 @@ i {
 #post {
   background-color: green;
   color: white;
-  width: 15%;
   font-size: 2rem;
-  text-align: right;
+  width: 17%;
 }
 
 textarea {

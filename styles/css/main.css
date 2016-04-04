@@ -7,8 +7,8 @@ body {
 
 nav {
   width: 100%;
-  height: 20vh;
-  background-color: rgba(17, 101, 97, 0.84);
+  height: 12vh;
+  background-color: #2f2f2f;
   display: flex;
   margin-bottom: 2rem; }
 
@@ -23,11 +23,17 @@ ul {
   margin: auto;
   width: 80%; }
 
-li {
+nav ul li {
   margin: auto;
   text-decoration: none;
   color: white;
   cursor: pointer; }
+
+.fa.fa-optin-monster {
+  font-size: 3rem; }
+
+.bar {
+  font-size: 2rem; }
 
 #posts {
   display: flex;
@@ -45,21 +51,28 @@ li {
   margin: auto; }
 
 #individual-post {
-  width: 60%;
+  width: 70%;
   margin: auto;
   margin-bottom: 2rem;
   display: flex; }
 
+#individual-post img {
+  width: 40%;
+  margin: auto;
+  height: 80%;
+  cursor: pointer; }
+
 .individual-post {
   display: flex;
   flex-flow: column;
-  width: 60%;
+  width: 55%;
   margin: auto; }
 
 .individual-post p {
   width: 80%;
   margin: auto;
-  font-size: .6rem; }
+  font-size: .8rem;
+  cursor: pointer; }
 
 .individual-post ul, .individual-post li {
   font-size: .8rem;
@@ -69,10 +82,16 @@ li {
   margin: auto; }
 
 .individual-post ul {
-  width: 50%;
+  width: 80%;
   padding-left: 0;
   margin-left: auto;
   margin-bottom: .5rem; }
+
+.fa-thumbs-up {
+  color: rgba(17, 101, 97, 0.84); }
+
+.fa-thumbs-down {
+  color: #ebbc30; }
 
 i {
   cursor: pointer;
@@ -82,13 +101,13 @@ i {
   color: white; }
 
 .deletePost {
-  background-color: #e81616; }
+  background-color: #981b1b; }
 
 .editPost {
   background-color: rgba(17, 101, 97, 0.84); }
 
 #createPost * {
-  width: 50%;
+  width: 70%;
   margin: auto;
   display: flex;
   flex-flow: column;
@@ -97,9 +116,8 @@ i {
 #post {
   background-color: green;
   color: white;
-  width: 15%;
   font-size: 2rem;
-  text-align: right; }
+  width: 17%; }
 
 textarea {
   height: 10rem; }

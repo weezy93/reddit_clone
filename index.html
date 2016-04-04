@@ -9,8 +9,11 @@
   <body ng-controller="HomeController">
     <nav>
       <ul>
-        <li ng-click="action.hidePostForm()">home</li>
+        <li ng-click="action.home()"><i class="fa fa-optin-monster"></i></li>
+        <li ng-click="action.home()">home</li>
+        <li class="bar">|</li>
         <li ng-click="action.showPostForm()">post</li>
+        <li class="bar">|</li>
         <li ng-click="action.showSearch()">search</li>
       </ul>
     </nav>
@@ -20,6 +23,9 @@
       <form id="createPostForm" ng-show="posts.makePost">
         <label for="username">UserName</label>
         <input type="text" placeholder="@doge" ng-model="postBody.username"/>
+      <br>
+        <label for="image">Image</label>
+        <input type="text"placeholder="image.url">
       <br>
         <textarea id='body' ng-model="postBody.body"></textarea>
       <br>
@@ -39,49 +45,51 @@
         <section class="orderBy">
           <h3>Order By:</h3>
           <select ng-model="sort">
-            <option value="votes.total">total</option>
-            <option value="post.votes.upVote">up votes</option>
-            <option value="post.votes.downVote">down votes</option>
-            <option value="date">date</option>
+            <option value="-votes.total">total</option>
+            <option value="-post.votes.upVote">up votes</option>
+            <option value="-post.votes.downVote">down votes</option>
+            <option value="-date">date</option>
           </select>
+          <hr>
         </section>
       <br>
       <!-- build single post -->
-          <section id="individual-post" ng-repeat="post in posts.postArray | filter:search.searchWord | orderBy: '-votes.total'">
+          <section id="individual-post" ng-repeat="post in posts.postArray | filter:search.searchWord | orderBy: '-votes.total'" ng-hide="posts.showOnePost">
+            <img ng-click="action.showOnePost(post)" ng-src="{{ post.image }}" alt="image" />
             <div class="individual-post">
               <ul>
                 <!-- <li><i class="fa fa-diamond"></i></li> -->
-                <li>{{ post.username }}</li>
+                <li><h3>{{ post.username }}</h3></li>
                 <li><i class="fa fa-thumbs-up" ng-click="action.upVote(post)"></i></li>
                 <li><i class="fa fa-thumbs-down" ng-click="action.downVote(post)"></i></li>
                 <li><button class="deletePost" ng-click="action.deletePost(post)">delete</button></li>
-                <li><button class="editPost" ng-click="action.editPost(post)">edit</button></li>
               </ul>
 
-              <p>{{ post.body }}</p>
+              <p ng-click="action.showOnePost(post)">{{ post.body }}</p>
             </div>
         <br>
 
         </section>
 
   <!-- show one post -->
-      <!-- <section id="individual-post" ng-repeat="post in posts.postArray | orderBy: sort">
-        <div class="individual-post">
-          <ul>
-            <li>{{ post.username }}</li>
-            <li><i class="fa fa-thumbs-up" ng-click="action.upVote(post)"></i></li>
-            <li><i class="fa fa-thumbs-down" ng-click="action.downVote(post)"></i></li>
-            <li><button class="deletePost" ng-click="action.deletePost(post)">delete</button></li>
-            <li><button class="editPost" ng-click="action.editPost(post)">edit</button></li>
-          </ul>
+      <article class="showOnePost" ng-show="posts.showOnePost">
+        <section id="individual-post">
+          <img ng-src="{{ posts.singlePost.image }}" alt="image" />
+          <div class="individual-post">
+            <ul>
+              <li>{{ posts.singlePost.username }}</li>
+              <li><i class="fa fa-thumbs-up" ng-click="action.upVote(post)"></i></li>
+              <li><i class="fa fa-thumbs-down" ng-click="action.downVote(post)"></i></li>
+              <li><button class="deletePost" ng-click="action.deletePost(post)">delete</button></li>
+              <li><button class="editPost" ng-click="action.editPost(post)">edit</button></li>
+            </ul>
 
-          <p>{{ post.body }}</p>
-        </div>
-    <br>
-
-    </section> -->
-
+            <p>{{ posts.singlePost.body }}</p>
+          </div>
+        </section>
       </article>
+
+    </article>
     </main>
 
 

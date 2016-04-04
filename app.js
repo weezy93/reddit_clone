@@ -1,9 +1,15 @@
 window.app = angular.module('RedditClone', [/* messages and time dependecies */]);
 
 app.controller('HomeController', function ($scope) {
-  $scope.posts = { makePost: false, searching: false, latestID: 1, showOnePost: false,
+  $scope.posts = {
+    makePost: false,
+    searching: false,
+    latestID: 1,
+    showOnePost: false,
+    singlePost: {},
     postArray: [{
       username: '@doge',
+      image: 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg',
       id: 1,
       body:' Bacon ipsum dolor amet landjaeger chuck meatball chicken hamburger porchetta cow ball tip, turducken capicola rump pork chop boudin short loin salami. Tongue picanha flank meatloaf, strip steak beef leberkas landjaeger shank boudin. Andouille pig kielbasa, tenderloin cupim rump meatball drumstick. Salami pork tongue, turkey biltong shank filet mignon tri-tip corned beef ham.',
       votes: {
@@ -13,6 +19,7 @@ app.controller('HomeController', function ($scope) {
       },
     },{
       username: '@catt',
+      image: 'http://cdn1.theodysseyonline.com/files/2015/06/08/6356938644488566691013182599_grumpy-cat.jpg',
       id: 2,
       body:' Bacon ipsum dolor amet landjaeger chuck meatball chicken hamburger porchetta cow ball tip, turducken capicola rump pork chop boudin short loin salami. Tongue picanha flank meatloaf, strip steak beef leberkas landjaeger shank boudin. Andouille pig kielbasa, tenderloin cupim rump meatball drumstick. Salami pork tongue, turkey biltong shank filet mignon tri-tip corned beef ham.',
       votes: {
@@ -35,12 +42,15 @@ app.controller('HomeController', function ($scope) {
     $scope.posts.makePost = true;
   };
 
-  $scope.action.hidePostForm = function () {
+  $scope.action.home = function () {
     $scope.posts.makePost = false;
+    $scope.posts.singlePost = {};
+    $scope.posts.showOnePost = false;
+    $scope.posts.searching = false;
   };
 
   $scope.action.createPost = function (newPost) {
-    newPost.id =   ++$scope.posts.latestID;
+    newPost.id = ++$scope.posts.latestID;
     newPost.votes = 0;
     $scope.posts.postArray.push(newPost);
     $scope.postBody = { username: '', body: '' };
@@ -51,14 +61,12 @@ app.controller('HomeController', function ($scope) {
     var index = $scope.posts.postArray.indexOf(post);
     $scope.posts.postArray[index].votes.upVote++;
     $scope.posts.postArray[index].votes.total++;
-    console.log($scope.posts.postArray[index].votes);
   };
 
   $scope.action.downVote = function (post) {
     var index = $scope.posts.postArray.indexOf(post);
     $scope.posts.postArray[index].votes.downVote++;
     $scope.posts.postArray[index].votes.total--;
-    console.log($scope.posts.postArray[index].votes);
   };
 
   $scope.action.deletePost = function (post) {
@@ -72,6 +80,12 @@ app.controller('HomeController', function ($scope) {
 
   $scope.action.showSearch = function () {
     $scope.posts.searching = !$scope.posts.searching;
+  };
+
+  $scope.action.showOnePost = function (postObj) {
+    $scope.posts.showOnePost = true;
+    var index = $scope.posts.postArray.indexOf(postObj);
+    return $scope.posts.singlePost = postObj;
   };
 
 });
