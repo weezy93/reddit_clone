@@ -20,16 +20,16 @@
 <!-- rows="8" cols="40" -->
     <!-- Create Post -->
     <article id="createPost">
-      <form id="createPostForm" ng-show="posts.makePost">
+      <form name="createPost" id="createPostForm" ng-show="posts.makePost" novalidate ng-submit="action.createPost(postBody)">
         <label for="username">UserName</label>
         <input type="text" placeholder="@doge" ng-model="postBody.username"/>
       <br>
         <label for="image">Image</label>
-        <input type="text" placeholder="image.url">
+        <input type="text" placeholder="image url" ng-model="postBody.image">
       <br>
         <textarea ng-model="postBody.body"></textarea>
       <br>
-        <button id="post" ng-click="action.createPost(postBody)">post!</button>
+        <button id="post" type="submit"><i class="fa fa-pencil"></i></button>
       </form>
     </article>
 
@@ -78,11 +78,11 @@
           <img ng-src="{{ posts.singlePost.image }}" alt="image" />
           <div class="individual-post">
             <ul>
-              <li>{{ posts.singlePost.username }}</li>
-              <li><i class="fa fa-thumbs-up" ng-click="action.upVote(post)"></i></li>
+              <li><h3>{{ posts.singlePost.username }}</h3></li>
+              <li><i class="fa fa-thumbs-up" ng-click="action.upVote(posts.singlePost)"></i></li>
               <li><i class="fa fa-thumbs-down" ng-click="action.downVote(post)"></i></li>
+              <li><h3>{{posts.singlePost.votes.total}}</h3></li>
               <li><button class="deletePost" ng-click="action.deletePost(post)">delete</button></li>
-              <li><button class="editPost" ng-click="action.editPost(post)">edit</button></li>
             </ul>
 
             <p>{{ posts.singlePost.body }}</p>
@@ -101,12 +101,12 @@
             </p>
           </div>
 
-          <form class="commentForm" ng-show="posts.commenting">
-            <input type="text" placeholder="yourName" ng-model="commentBody.name">
+          <form name="addComment" class="commentForm" ng-show="posts.commenting" novalidate ng-submit="action.addComment(posts.singlePost.id, commentBody)">
+            <input type="text" placeholder="yourName" ng-model="commentBody.name" ng-minlength="3">
           <br><br>
             <textarea ng-model="commentBody.body"></textarea>
           <br>
-            <button id="addComment" ng-click="action.addComment(posts.singlePost.id, commentBody)"></button>
+            <button id="addComment" type="submit"><i class="fa fa-pencil"></i></button>
           </form>
         </section>
       </article>

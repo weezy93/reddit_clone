@@ -76,10 +76,7 @@ app.controller('HomeController', function ($scope) {
   $scope.action.deletePost = function (post) {
     var index = $scope.posts.postArray.indexOf(post);
     $scope.posts.postArray.splice(index, 1);
-  };
-
-  $scope.action.editPost = function (post) {
-    // edit logic
+    return $scope.action.home();
   };
 
   $scope.action.showSearch = function () {
