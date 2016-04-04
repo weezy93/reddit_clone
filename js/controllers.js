@@ -1,5 +1,3 @@
-window.app = angular.module('RedditClone', [/* messages and time dependecies */]);
-
 app.controller('HomeController', function ($scope) {
   $scope.posts = {
     makePost: false,
@@ -55,7 +53,7 @@ app.controller('HomeController', function ($scope) {
 
   $scope.action.createPost = function (newPost) {
     newPost.id = ++$scope.posts.latestID;
-    newPost.votes = 0;
+    newPost.votes = { total:0, upVote: 0, downVote: 0 };
     $scope.posts.postArray.push(newPost);
     $scope.postBody = { username: '', body: '' };
     $scope.posts.makePost = false;
@@ -65,6 +63,7 @@ app.controller('HomeController', function ($scope) {
     var index = $scope.posts.postArray.indexOf(post);
     $scope.posts.postArray[index].votes.upVote++;
     $scope.posts.postArray[index].votes.total++;
+    console.log(post, index);
   };
 
   $scope.action.downVote = function (post) {
