@@ -25,9 +25,9 @@
         <input type="text" placeholder="@doge" ng-model="postBody.username"/>
       <br>
         <label for="image">Image</label>
-        <input type="text"placeholder="image.url">
+        <input type="text" placeholder="image.url">
       <br>
-        <textarea id='body' ng-model="postBody.body"></textarea>
+        <textarea ng-model="postBody.body"></textarea>
       <br>
         <button id="post" ng-click="action.createPost(postBody)">post!</button>
       </form>
@@ -71,7 +71,7 @@
 
         </section>
 
-  <!-- show one post -->
+  <!-- view single post -->
       <article class="showOnePost" ng-show="posts.showOnePost">
         <section id="individual-post">
           <img ng-src="{{ posts.singlePost.image }}" alt="image" />
@@ -86,6 +86,16 @@
 
             <p>{{ posts.singlePost.body }}</p>
           </div>
+        </section>
+
+      <hr>
+        <section class="comment">
+          <h3>Comment &nbsp<i class="fa fa-pencil" ng-click="action.showComment()"></i></h3>
+          <form class="commentForm" ng-show="posts.commenting">
+            <input type="text" placeholder="yourName" ng-model="posts.postArray['post.id'].comments.name">
+          <br><br>
+            <textarea ng-model="posts.postArray['post.id'].comments.body"></textarea>
+          </form>
         </section>
       </article>
 

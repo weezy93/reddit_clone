@@ -59,13 +59,18 @@ nav ul li  {
   flex-flow: column;
 }
 
-.search, .orderBy {
+.comment, .search, .orderBy {
   text-align: center;
   width: 60%;
   margin: auto;
 }
 
-.search input {
+.comment textarea{
+  width: 80%;
+  height: 10rem;
+}
+
+.search input, .comment input {
   text-align: center;
   width: 50%;
   margin: auto;
