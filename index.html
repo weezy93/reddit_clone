@@ -14,25 +14,25 @@
         <li ng-click="action.showSearch()">search</li>
       </ul>
     </nav>
+<!-- rows="8" cols="40" -->
+    <!-- Create Post -->
+    <article id="createPost">
+      <form id="createPostForm" ng-show="posts.makePost">
+        <label for="username">UserName</label>
+        <input type="text" placeholder="@doge" ng-model="postBody.username"/>
+      <br>
+        <textarea id='body' ng-model="postBody.body"></textarea>
+      <br>
+        <button id="post" ng-click="action.createPost(postBody)">post!</button>
+      </form>
+    </article>
 
     <main>
-<!-- Create Post -->
-      <article class="createPost">
-        <form class="createPostForm" ng-show="posts.makePost">
-          <label for="username">UserName</label>
-          <input type="text" placeholder="@doge" ng-model="postBody.username">
-          <br>
-          <label for="body"></label>
-          <textarea id='body' rows="8" cols="40" ng-model="postBody.body">Say some stuff</textarea>
-          <br>
-          <button type="submit" ng-click="action.createPost(postBody)">post!</button>
-        </form>
-      </article>
 <!-- view all posts -->
       <article id="posts" ng-show="posts.makePost === false">
 
         <section class="search" ng-show="posts.searching===true">
-          <h3>Search: </h3><input type="text" placeholder="words and words" ng-model="searchWord">
+          <h3>Search: </h3><input type="text" placeholder="words and words" ng-model="search.searchWord" ng-change="action.search()">
           <hr>
         </section>
     <!-- orderBy select -->
@@ -65,6 +65,7 @@
       </article>
     </main>
 
+    {{ search.returnSearch }}
 
 
     <script type="text/javascript" src = 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>

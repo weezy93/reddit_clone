@@ -2,7 +2,7 @@ body {
   font-size: 16px;
   display: flex;
   flex-direction: column;
-  font-family: monospace;
+  font-family: 'Arial';
   padding: 0; }
 
 nav {
@@ -86,3 +86,20 @@ i {
 
 .editPost {
   background-color: rgba(17, 101, 97, 0.84); }
+
+#createPost * {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  text-align: center; }
+
+#post {
+  background-color: green;
+  color: white;
+  width: 15%;
+  font-size: 2rem;
+  text-align: right; }
+
+textarea {
+  height: 10rem; }

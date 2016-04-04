@@ -2,7 +2,7 @@
 // @import "neat";
 // @import "bitters/base";
 // @import "bitters/lists";
-@import "createPost";
+
 
 $red: #e81616;
 $teal: rgba(17, 101, 97, 0.84);
@@ -11,7 +11,7 @@ body {
   font-size: 16px;
   display: flex;
   flex-direction: column;
-  font-family: monospace;
+  font-family: 'Arial';
   padding: 0;
 }
 nav {
@@ -111,5 +111,26 @@ i {
 .editPost {
   background-color: $teal;
 }
+
+#createPost * {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+#post {
+  background-color: green;
+  color: white;
+  width: 15%;
+  font-size: 2rem;
+  text-align: right;
+}
+
+textarea {
+  height: 10rem;
+}
+
 
 // node-sass -o styles/css -wr styles/scss

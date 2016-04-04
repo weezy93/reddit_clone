@@ -1,7 +1,7 @@
 window.app = angular.module('RedditClone', [/* messages and time dependecies */]);
 
 app.controller('HomeController', function ($scope) {
-  $scope.posts = { makePost: false, searching: false,
+  $scope.posts = { makePost: false, searching: false, latestID: 1,
     postArray: [{
       username: '@doge',
       id: 1,
@@ -23,7 +23,13 @@ app.controller('HomeController', function ($scope) {
 
   $scope.sort = 'upVote';
 
-  $scope.posts.latestID = 1;
+
+  $scope.search = {};
+  $scope.search.searchWord = '';
+  $scope.search.returnSearch = {};
+
+
+  // Action - functions
   $scope.action = {};
   $scope.action.showPostForm = function () {
     $scope.posts.makePost = true;
@@ -69,16 +75,27 @@ app.controller('HomeController', function ($scope) {
   };
 
   $scope.action.search = function (searchWord) { // onChange
-    // search logic
-    var word = searchWord.toLowerCase();
+
+    var word = $scope.search.searchWord.toLowerCase();
     $scope.posts.postArray.forEach(function (obj) {
-      if (obj.username.indexOf(word) !== -1) {
-        // sort
-      } else if (obj.body.indexOf(word) !== -1) {
-        // sort
+
+      var username = obj.username.toLowerCase();
+      var bodyArray = obj.body.split();
+      var lowerCaseBody = [];
+      bodyArray.forEach(function (letter) {
+        return lowerCaseBody.push(letter.toLowerCase());
+      });
+
+      var body = lowerCaseBody.join();
+
+      if (username.indexOf(word) !== -1) {
+        return $scope.search.returnSearch = obj;
+      } else if (body.indexOf(word) !== -1) {
+        return $scope.search.returnSearch = obj;
       } else {
-        // show nothing
+        return $scope.search.returnSearch = 'Nothing Matches';
       }
+
     });
   };
 });
