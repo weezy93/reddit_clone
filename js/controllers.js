@@ -1,5 +1,3 @@
-window.app = angular.module('RedditClone', [/* messages and time dependecies */]);
-
 app.controller('HomeController', function ($scope) {
   $scope.posts = {
     makePost: false,
