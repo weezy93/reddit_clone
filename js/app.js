@@ -1,1 +1,1 @@
-window.app = angular.module('RedditClone', ['ngMessages'/* messages and time dependecies */]);
+window.app = angular.module('RedditClone', [/* ngmessages and time dependecies */]);
