@@ -17,7 +17,7 @@ body {
   padding: 0;
   margin: 0;
   background-image: url('./connect.png');
-  // background-color: red;
+  order: 0;
 }
 nav {
   width: 100%;
@@ -30,6 +30,7 @@ nav {
 main {
   display: flex;
   width: 100%;
+  order: 1;
 }
 
 ul {
