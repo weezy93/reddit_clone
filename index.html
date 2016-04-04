@@ -62,6 +62,7 @@
                 <li><h3>{{ post.username }}</h3></li>
                 <li><i class="fa fa-thumbs-up" ng-click="action.upVote(post)"></i></li>
                 <li><i class="fa fa-thumbs-down" ng-click="action.downVote(post)"></i></li>
+                <li><h3>{{post.votes.total}}</h3></li>
                 <li><button class="deletePost" ng-click="action.deletePost(post)">delete</button></li>
               </ul>
 
@@ -89,12 +90,23 @@
         </section>
 
       <hr>
+      <!-- comment section -->
         <section class="comment">
           <h3>Comment &nbsp<i class="fa fa-pencil" ng-click="action.showComment()"></i></h3>
+
+          <div class="comments" ng-repeat="comment in posts.singlePost.comments">
+            <h5>{{ comment.name }}</h5>
+            <p>
+              {{ comment.body }}
+            </p>
+          </div>
+
           <form class="commentForm" ng-show="posts.commenting">
-            <input type="text" placeholder="yourName" ng-model="posts.postArray['post.id'].comments.name">
+            <input type="text" placeholder="yourName" ng-model="commentBody.name">
           <br><br>
-            <textarea ng-model="posts.postArray['post.id'].comments.body"></textarea>
+            <textarea ng-model="commentBody.body"></textarea>
+          <br>
+            <button id="addComment" ng-click="action.addComment(posts.singlePost.id, commentBody)"></button>
           </form>
         </section>
       </article>

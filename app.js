@@ -38,6 +38,8 @@ app.controller('HomeController', function ($scope) {
   $scope.search.searchWord = '';
   $scope.search.returnSearch = {};
 
+  $scope.commentBody = {};
+
   // Action - functions
   $scope.action = {};
   $scope.action.showPostForm = function () {
@@ -92,6 +94,12 @@ app.controller('HomeController', function ($scope) {
 
   $scope.action.showComment = function () {
     $scope.posts.commenting = !$scope.posts.commenting;
+  };
+
+  $scope.action.addComment = function (id, comment) {
+    var index = $scope.posts.postArray.indexOf(id);
+    console.log(comment);
+    $scope.posts.postArray[index].comments.push(comment);
   };
 
 });

@@ -3,7 +3,8 @@ body {
   display: flex;
   flex-direction: column;
   font-family: 'Arial';
-  padding: 0; }
+  padding: 0;
+  margin: 0; }
 
 nav {
   width: 100%;
@@ -47,7 +48,8 @@ nav ul li {
 
 .comment textarea {
   width: 80%;
-  height: 10rem; }
+  height: 10rem;
+  margin-bottom: 4rem; }
 
 .search input, .comment input {
   text-align: center;
@@ -117,7 +119,7 @@ i {
   flex-flow: column;
   text-align: center; }
 
-#post {
+#post, #addComment {
   background-color: green;
   color: white;
   font-size: 2rem;
@@ -125,3 +127,7 @@ i {
 
 textarea {
   height: 10rem; }
+
+.comments {
+  text-align: left;
+  border-style: solid 1px black; }
