@@ -22,7 +22,7 @@
     <article id="createPost">
       <form name="createPost" id="createPostForm" ng-show="posts.makePost" novalidate ng-submit="action.createPost(postBody)">
         <label for="username">UserName</label>
-        <input type="text" placeholder="@doge" ng-model="postBody.username"/>
+        <input type="text" placeholder="@doge" ng-model="postBody.username" required/>
       <br>
         <label for="image">Image</label>
         <input type="text" placeholder="image url" ng-model="postBody.image">
