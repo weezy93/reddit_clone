@@ -5,6 +5,7 @@
     <title>Reddit Clone App</title>
     <link rel="stylesheet" href="/styles/css/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
   </head>
   <body ng-controller="HomeController">
     <nav>
@@ -20,7 +21,7 @@
 <!-- rows="8" cols="40" -->
     <!-- Create Post -->
     <article id="createPost">
-      <form name="createPost" id="createPostForm" ng-show="posts.makePost" novalidate ng-submit="action.createPost(postBody)">
+      <!-- <form name="createPost" id="createPostForm" ng-show="posts.makePost" novalidate ng-submit="action.createPost(postBody)">
         <label for="username">UserName</label>
         <input type="text" placeholder="@doge" ng-model="postBody.username" required/>
       <br>
@@ -30,6 +31,22 @@
         <textarea ng-model="postBody.body"></textarea>
       <br>
         <button id="post" type="submit"><i class="fa fa-pencil"></i></button>
+      </form> -->
+      <form name="createPost" id="createPostForm" ng-show="posts.makePost" novalidate ng-submit="action.createPost(postBody)">
+        <div class="row">
+          <div class="six columns">
+            <label for="username">UserName</label>
+            <input type="text" placeholder="@doge" ng-model="postBody.username" required/>
+          </div>
+        <br>
+          <label for="image">Image</label>
+          <input type="text" placeholder="image url" ng-model="postBody.image">
+        <br>
+          <textarea ng-model="postBody.body"></textarea>
+        <br>
+          <button id="post" type="submit"><i class="fa fa-pencil"></i></button>
+
+      </div>
       </form>
     </article>
 
