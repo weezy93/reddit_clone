@@ -128,4 +128,58 @@ describe('post routes', function() {
 
   });
 
+  describe('/PUT post', function () {
+
+    it('should return one post', function(done) {
+      Posts.findOne(function (err, post) {
+        var post_id = post._id;
+        chai.request(server)
+        .put('/posts/' + post_id)
+        .send({username: 'dogg', votes: 100})
+        .end(function (err, res) {
+          res.status.should.equal(200);
+          res.type.should.equal('application/json');
+          res.body.should.be.a('object');
+          res.body.should.have.property('status');
+          res.body.should.have.property('data');
+          res.body.data.should.be.a('object');
+          res.body.data.should.have.property('username');
+          res.body.data.username.should.equal('dogg');
+          res.body.data.should.have.property('postBody');
+          res.body.data.postBody.should.be.a('string');
+          res.body.data.should.have.property('image');
+          res.body.data.image.should.be.a('string');
+          res.body.data.should.have.property('votes');
+          res.body.data.votes.should.equal(100);
+          res.body.data.should.have.property('postedAt');
+          res.body.data.postedAt.should.be.a('string');
+          res.body.data.should.have.property('comments');
+          res.body.data.comments.should.be.a('array');
+          res.body.data.comments.length.should.equal(0);
+          res.body.data.should.have.property('showComments');
+          res.body.data.showComments.should.equal(false);
+          done();
+        });
+      });
+    });
+  });
+
+  describe('/DELETE one post', function () {
+
+    it('should delete a single post', function(done) {
+      Posts.findOne(function (err, post) {
+        var post_id = post._id;
+        chai.request(server)
+        .delete('/posts/' + post_id)
+        .end(function (err, res) {
+          res.status.should.equal(200);
+          res.type.should.equal('application/json');
+          res.body.should.be.a('object');
+          res.body._id.should.equal(post_id.toString());
+          done();
+        });
+      });
+    });
+  });
+
 });
