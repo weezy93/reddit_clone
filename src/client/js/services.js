@@ -30,10 +30,9 @@ angular.module('RedditClone')
         return err;
       });
     },
-    deleteOne: function (resource, post) {
+    deleteOne: function (resource) {
       return $http.delete('/' + resource )
       .then(function (res) {
-        console.log('res', res);
         return res;
       })
       .catch(function (err) {
@@ -41,7 +40,7 @@ angular.module('RedditClone')
       });
     },
     updateOne: function (resource, payload) {
-      // update
+      return $http.put('/' + resource, payload);
     }
   }
 }])
@@ -64,16 +63,16 @@ angular.module('RedditClone')
       return crudService.addOne('posts/new', postBody)
       .then(function (post) {
         return post;
-      })
-      .catch(function (err) {
-        console.log(err);
       });
     },
     updatePost: function (post, option) {
       // update single
     },
-    deletePost: function (post) {
-      // findByIdAndRemove(post._id)
+    deletePost: function (id) {
+      return crudService.deleteOne('posts/' + id)
+      .then(function (post) {
+        return post;
+      });
     }
   }
 }]);

@@ -3,11 +3,15 @@ angular.module('RedditClone')
 
   $scope.posts = [];
   $scope.postBody = {};
-  
-  postService.getAllPosts()
-  .then(function (posts) {
-    $scope.posts = posts;
-  });
+
+  $scope.refresh = function () {
+    postService.getAllPosts()
+    .then(function (posts) {
+      $scope.posts = posts;
+    });
+  };
+
+  $scope.refresh();
 
   $scope.getSinglePost = function (id) {
     postService.getSinglePost(id)
@@ -35,7 +39,8 @@ angular.module('RedditClone')
 
   $scope.deletePost = function (id) {
     postService.deletePost(id)
-    .then(function () {
+    .then(function (post) {
+      $scope.refresh();
       $location.path('/posts');
     });
   };

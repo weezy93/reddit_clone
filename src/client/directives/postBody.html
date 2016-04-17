@@ -1,4 +1,4 @@
-<img ng-src="{{ post.image }}" alt="image" />
+<img ng-src="{{ post.image }}" alt="image" ng-click="getSinglePost(post._id)"/>
 <div class="individual-post">
   <ul>
     <!-- <li><i class="fa fa-diamond"></i></li> -->
@@ -6,9 +6,9 @@
     <li><i class="fa fa-thumbs-up" ng-click="action.upVote(post)"></i></li>
     <li><i class="fa fa-thumbs-down" ng-click="action.downVote(post)"></i></li>
     <li><h3>{{post.votes.total}}</h3></li>
-    <li><button class="deletePost" ng-click="action.deletePost(post)">delete</button></li>
+    <li><button class="deletePost" ng-click="deletePost(post._id)">delete</button></li>
   </ul>
 
-  <p ng-click="action.showOnePost(post)">{{ post.body }}</p>
+  <p ng-click="getSinglePost(post._id)">{{ post.postBody }}</p>
 </div>
 <br>
