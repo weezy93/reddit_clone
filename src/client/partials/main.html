@@ -1,1 +1,5 @@
-w
+<search-bar class="search" ng-show="posts.searching===true"></search-bar>
+
+<hr>
+
+<post-body id="individual-post" ng-repeat="post in posts | filter:search.searchWord | orderBy: '-votes.total'"></post-body>

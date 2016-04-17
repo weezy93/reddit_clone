@@ -1,4 +1,10 @@
 angular.module('RedditClone')
+.directive('navBar', function () {
+  return {
+    restrict: 'E',
+    templateUrl: '../directives/navBar.html'
+  }
+})
 .directive('postBody', function () {
   return {
     restrict: 'E',

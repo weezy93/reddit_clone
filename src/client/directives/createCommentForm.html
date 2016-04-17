@@ -1,0 +1,12 @@
+<form name="addComment" class="commentForm" novalidate ng-submit="action.addComment(post, commentBody)">
+  <fieldset>
+    <legend>
+      Comment <i class="fa fa-pencil" ng-click="action.showComment()"></i>
+    </legend>
+  </fieldset>
+  <input type="text" placeholder="yourName" ng-model="commentBody.name" ng-minlength="3">
+<br><br>
+  <textarea ng-model="commentBody.body"></textarea>
+<br>
+  <button id="addComment" type="submit"><i class="fa fa-pencil"></i></button>
+</form>

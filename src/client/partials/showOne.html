@@ -1,0 +1,12 @@
+<post-body id="individual-post"></post-body>
+
+<hr>
+<create-comment-form></create-comment-form>
+
+<hr>
+<div class="comments" ng-repeat="comment in post.comments">
+  <h5>{{ comment.name }}</h5>
+  <p>
+    {{ comment.body }}
+  </p>
+</div>
