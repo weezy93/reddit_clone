@@ -13,6 +13,6 @@ var PostSchema = new Schema ({
   showComments: { type: Boolean, default: false }
 });
 
-var Post = mongoose.model('posts', PostSchema);
+var Posts = mongoose.model('posts', PostSchema);
 
-module.exports = Post;
+module.exports = Posts;
