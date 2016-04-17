@@ -42,4 +42,15 @@ router.post('/new', function (req, res, next) {
   });
 });
 
+router.delete('/:id', function (req, res, next) {
+  var post_id = req.params.id;
+  Posts.findByIdAndRemove(post_id)
+  .then(function (post) {
+    res.status(200).json(post);
+  })
+  .catch(function (err) {
+    return next(err);
+  });
+});
+
 module.exports = router;

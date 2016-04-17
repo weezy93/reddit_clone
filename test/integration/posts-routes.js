@@ -128,4 +128,22 @@ describe('post routes', function() {
 
   });
 
+  describe('/DELETE one post', function () {
+
+    it('should delete a single post', function(done) {
+      Posts.findOne(function (err, post) {
+        var post_id = post._id;
+        chai.request(server)
+        .delete('/posts/' + post_id)
+        .end(function (err, res) {
+          res.status.should.equal(200);
+          res.type.should.equal('application/json');
+          res.body.should.be.a('object');
+          res.body._id.should.equal(post_id.toString());
+          done();
+        });
+      });
+    });
+  });
+
 });
