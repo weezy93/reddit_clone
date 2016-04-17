@@ -1,5 +1,5 @@
 angular.module('RedditClone')
-.service('postService', '$http', [function ($http) {
+.service('postService', ['$http', function ($http) {
   return {
     getAllPosts: function () {
       // return all posts

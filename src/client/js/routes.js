@@ -1,9 +1,9 @@
 angular.module('RedditClone')
-.config(function ($routeProvider, $locationProvider) {
+.config(function ($routeProvider) {
   $routeProvider
   .when('/', {
     templateUrl: '../partials/main.html',
-    controller: ''
+    controller: 'HomeController'
   })
   .otherwise('/');
 });
