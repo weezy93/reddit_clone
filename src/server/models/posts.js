@@ -9,7 +9,7 @@ var PostSchema = new Schema ({
   image: { type: String, required: true },
   votes: { type: Number, default: 0 },
   postedAt: { type: Date, default: new Date() },
-  comments: { type: Array },
+  comments: { type: Array, default: [] },
   showComments: { type: Boolean, default: false }
 });
 

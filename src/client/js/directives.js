@@ -1,4 +1,10 @@
 angular.module('RedditClone')
+.directive('navBar', function () {
+  return {
+    restrict: 'E',
+    templateUrl: '../directives/navBar.html'
+  }
+})
 .directive('postBody', function () {
   return {
     restrict: 'E',
@@ -9,5 +15,11 @@ angular.module('RedditClone')
   return {
     restrict: 'E',
     templateUrl: '../directives/searchBar.html'
+  }
+})
+.directive('createPostForm', function () {
+  return {
+    restrict: 'E',
+    templateUrl: '../directives/createPostForm.html'
   }
 });

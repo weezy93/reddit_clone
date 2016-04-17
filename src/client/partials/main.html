@@ -1,1 +1,17 @@
-w
+<search-bar class="search"></search-bar>
+
+<hr>
+<section class="orderBy">
+  <h3>Order By:</h3>
+  <select ng-model="sort">
+    <option value="-votes.total">total</option>
+    <option value="-post.votes.upVote">up votes</option>
+    <option value="-post.votes.downVote">down votes</option>
+    <option value="-date">date</option>
+  </select>
+  <hr>
+</section>
+
+<hr>
+
+<post-body id="individual-post" ng-repeat="post in posts | filter:search.searchWord | orderBy: '-votes.total'"></post-body>
