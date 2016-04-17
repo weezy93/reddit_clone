@@ -10,9 +10,4 @@ angular.module('RedditClone')
     restrict: 'E',
     templateUrl: '../directives/searchBar.html'
   }
-})
-.directive('', function () {
-  return {
-
-  }
 });

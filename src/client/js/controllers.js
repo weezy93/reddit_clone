@@ -1,4 +1,5 @@
-app.controller('HomeController', function ($scope) {
+angular.module('RedditClone')
+.controller('HomeController', function ($scope) {
   $scope.posts = {
     makePost: false,
     searching: false,

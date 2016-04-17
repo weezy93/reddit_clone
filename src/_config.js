@@ -1,8 +1,8 @@
 var config = {};
 
 config.mongoURI = {
-  test: 'mongodb://localhost/reddit_clone',
-  development: 'mongodb://localhost/reddit_clone',
+  test: 'mongodb://localhost/redditClone',
+  development: 'mongodb://localhost/redditClone',
   production: process.env.MONGODB_URI
 }
 
