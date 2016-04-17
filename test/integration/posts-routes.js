@@ -23,7 +23,7 @@ describe('post routes', function() {
   // get all
   describe('/GET all posts', function () {
 
-    it('should return all students', function (done) {
+    it('should return all posts', function (done) {
       chai.request(server)
       .get('/posts')
       .end(function (err, res) {
@@ -43,11 +43,12 @@ describe('post routes', function() {
         done();
       });
     });
+
   });
 
   describe('/GET-ONE post', function (err, res) {
 
-    it('should return one student', function(done) {
+    it('should return one post', function(done) {
       Posts.findOne(function (err, post) {
         var post_id = post._id;
         chai.request(server)
@@ -78,6 +79,53 @@ describe('post routes', function() {
         });
       });
     });
+
+  });
+
+  describe('/POST single', function (err, res) {
+
+    it('should add one post', function(done) {
+      Posts.findOne(function (err, post) {
+        var post_id = post._id;
+        chai.request(server)
+        .post('/posts/new')
+        .send({
+        username: 'birdd',
+        postBody: 'tweet',
+        image: 'image',
+        votes: 0,
+        postedAt: new Date(),
+        comments: [],
+        showComments: false
+        })
+        .end(function (err, res) {
+          res.status.should.equal(200);
+          res.type.should.equal('application/json');
+          res.body.should.be.a('object');
+          res.body.should.have.property('status');
+          res.body.should.have.property('data');
+          res.body.data.should.be.a('object');
+          res.body.data.should.have.property('username');
+          res.body.data.username.should.equal('birdd');
+          res.body.data.should.have.property('postBody');
+          res.body.data.postBody.should.be.a('string');
+          res.body.data.postBody.should.equal('tweet');
+          res.body.data.should.have.property('image');
+          res.body.data.image.should.be.a('string');
+          res.body.data.should.have.property('votes');
+          res.body.data.votes.should.equal(0);
+          res.body.data.should.have.property('postedAt');
+          res.body.data.postedAt.should.be.a('string');
+          res.body.data.should.have.property('comments');
+          res.body.data.comments.should.be.a('array');
+          res.body.data.comments.length.should.equal(0);
+          res.body.data.should.have.property('showComments');
+          res.body.data.showComments.should.equal(false);
+          done();
+        });
+      });
+    });
+
   });
 
 });

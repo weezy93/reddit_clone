@@ -28,4 +28,18 @@ router.get('/:id', function (req, res, next) {
   });
 });
 
+router.post('/new', function (req, res, next) {
+  var post = new Posts(req.body);
+  post.save()
+  .then(function (post) {
+    res.status(200).json({
+      status: 'success',
+      data: post
+    });
+  })
+  .catch(function (err) {
+    return next(err);
+  });
+});
+
 module.exports = router;
