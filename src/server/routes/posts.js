@@ -15,4 +15,17 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/:id', function (req, res, next) {
+  Posts.findById(req.params.id)
+  .then(function (post) {
+    res.status(200).json({
+      status: 'success',
+      data: post
+    });
+  })
+  .catch(function (err) {
+    return next(err);
+  });
+});
+
 module.exports = router;
