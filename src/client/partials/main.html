@@ -2,4 +2,4 @@
 
 <hr>
 
-<post-body id="individual-post" ng-repeat="post in posts | filter:search.searchWord | orderBy: '-votes.total'"></post-body>
+<post-body id="individual-post" ng-click="getSinglePost(post._id)" ng-repeat="post in posts | filter:search.searchWord | orderBy: '-votes.total'"></post-body>

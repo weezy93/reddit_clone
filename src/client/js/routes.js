@@ -10,10 +10,12 @@ angular.module('RedditClone')
     controller: 'postController'
   })
   .when('/posts/new', {
-    templateUrl: '../partials/createPostPage.html'
+    templateUrl: '../partials/createPostPage.html',
+    controller: 'postController'
   })
-  .when('/posts/:id', {
-    templateUrl: '../partials/showOne.html'
+  .when('/posts/show', {
+    templateUrl: '../partials/showOne.html',
+    controller: 'singlePostController'
   })
   .when('/register', {
     templateUrl: '../partials/login.html'

@@ -1,10 +1,47 @@
 angular.module('RedditClone')
-.controller('postController', ['$scope', 'postService', function ($scope, postService) {
+.controller('postController', ['$scope', '$location', 'postService', function ($scope, $location, postService) {
+
   $scope.posts = [];
+  $scope.postBody = {};
+  
   postService.getAllPosts()
   .then(function (posts) {
     $scope.posts = posts;
   });
+
+  $scope.getSinglePost = function (id) {
+    postService.getSinglePost(id)
+    .then(function (post) {
+      postService.singlePost = post;
+      $location.path('/posts/show')
+    });
+  };
+
+  $scope.addPost = function (postBody) {
+    postService.addPost(postBody)
+    .then(function (post) {
+      postService.singlePost = post;
+      $location.path('/posts/show');
+    });
+  };
+
+  $scope.updatePost = function (post) {
+    postService.updatePost()
+    .then(function (post) {
+      postService.singlePost = post;
+      $location.path('/posts/show');
+    });
+  };
+
+  $scope.deletePost = function (id) {
+    postService.deletePost(id)
+    .then(function () {
+      $location.path('/posts');
+    });
+  };
+}])
+.controller('singlePostController', ['$scope', '$location', 'postService', function ($scope, $location, postService) {
+  $scope.post = postService.singlePost;
 }])
 .controller('loginController', ['$scope', 'authService', function ($scope, authService) {
   $scope.title = 'Login';

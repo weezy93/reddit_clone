@@ -10,21 +10,23 @@ angular.module('RedditClone')
         return err;
       });
     },
-    getOne: function (resource, payload) {
-      $http.get('/' + resource)
-      .then(function (results) {
+    getOne: function (resource) {
+      return $http.get('/' + resource)
+      .then(function (result) {
         return result;
       })
       .catch(function (err) {
         return next(err);
       });
     },
-    addOne: function (resource, payload) {
-      return $http.post('/' + resource, payload)
-      .then(function (res) {
-        return res;
-      })
-      .catch(function (err) {
+    addOne: function(resource, data) {
+      return $http({
+        method: 'POST',
+        url: '/' + resource,
+        data: data,
+      }).then(function(result) {
+        return result.data.data;
+      }).catch(function(err) {
         return err;
       });
     },
@@ -45,6 +47,7 @@ angular.module('RedditClone')
 }])
 .service('postService', ['crudService', function (crudService) {
   return {
+    singlePost: {},
     getAllPosts: function () {
       return crudService.getAll('posts')
       .then(function (posts) {
@@ -52,13 +55,19 @@ angular.module('RedditClone')
       });
     },
     getSinglePost: function (id) {
-        return crudService.getOne('posts/' + id)
-        .then(function (post) {
-          return post;
-        });
+      return crudService.getOne('posts/' + id)
+      .then(function (post) {
+        return post.data.data;
+      });
     },
-    addPost: function (post) {
-      // return $http.post('/posts/new')
+    addPost: function (postBody) {
+      return crudService.addOne('posts/new', postBody)
+      .then(function (post) {
+        return post;
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
     },
     updatePost: function (post, option) {
       // update single
