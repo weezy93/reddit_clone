@@ -3,6 +3,10 @@ angular.module('RedditClone')
 
   $scope.posts = [];
   $scope.postBody = {};
+  $scope.edit = function (post) {
+    $scope.postBody = post;
+    $location.path('/posts/edit');
+  }
 
   $scope.refresh = function () {
     postService.getAllPosts()
@@ -26,6 +30,7 @@ angular.module('RedditClone')
     .then(function (post) {
       postService.singlePost = post;
       $location.path('/posts/show');
+      $scope.postBody = {};
     });
   };
 
@@ -34,6 +39,7 @@ angular.module('RedditClone')
     .then(function (post) {
       postService.singlePost = post;
       $location.path('/posts/show');
+      $scope.postBody = {};
     });
   };
 
@@ -45,8 +51,17 @@ angular.module('RedditClone')
     });
   };
 }])
+
 .controller('singlePostController', ['$scope', '$location', 'postService', function ($scope, $location, postService) {
   $scope.post = postService.singlePost;
+}])
+.controller('commentController', ['$scope', 'postService', function ($scope, postService) {
+  $scope.addComment = function () {
+    // edit post to add comment
+  };
+  $scope.deleteComment = function () {
+    // edit post to delete comment
+  };
 }])
 .controller('loginController', ['$scope', 'authService', function ($scope, authService) {
   $scope.title = 'Login';

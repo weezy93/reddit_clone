@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-css/1.0.7/angular-css.min.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="styles/css/main.css">
-    <link rel="stylesheet" ng-href="{{css}}">
   </head>
   <body>
     <nav-bar class="nav"></nav-bar>
@@ -25,52 +24,3 @@
     <script type="text/javascript" src="/js/filters.js"></script>
   </body>
 </html>
-
-
-
-    <main>
-<!-- view all posts -->
-      <article id="posts" ng-show="posts.makePost === false">
-
-
-<!-- search bar -->
-        <!-- <section class="search" ng-show="posts.searching===true">
-          <h3>Search: </h3><input type="text" placeholder="words and words" ng-model="search.searchWord">
-          <hr>
-        </section> -->
-    <!-- orderBy select -->
-        <section class="orderBy">
-          <h3>Order By:</h3>
-          <select ng-model="sort">
-            <option value="-votes.total">total</option>
-            <option value="-post.votes.upVote">up votes</option>
-            <option value="-post.votes.downVote">down votes</option>
-            <option value="-date">date</option>
-          </select>
-          <hr>
-        </section>
-      <br>
-
-<!-- replaced with main.html extended -->
-
-  <!-- view single post -->
-      <article class="showOnePost" ng-show="posts.showOnePost">
-
-      <hr>
-      <!-- comment section -->
-        <section class="comment">
-          <h3>Comment<i class="fa fa-pencil" ng-click="action.showComment()"></i></h3>
-
-          <div class="comments" ng-repeat="comment in posts.singlePost.comments">
-            <h5>{{ comment.name }}</h5>
-            <p>
-              {{ comment.body }}
-            </p>
-          </div>
-
-
-        </section>
-      </article>
-
-    </article>
-  </main>

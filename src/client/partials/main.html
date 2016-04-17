@@ -1,4 +1,16 @@
-<search-bar class="search" ng-show="posts.searching===true"></search-bar>
+<search-bar class="search"></search-bar>
+
+<hr>
+<section class="orderBy">
+  <h3>Order By:</h3>
+  <select ng-model="sort">
+    <option value="-votes.total">total</option>
+    <option value="-post.votes.upVote">up votes</option>
+    <option value="-post.votes.downVote">down votes</option>
+    <option value="-date">date</option>
+  </select>
+  <hr>
+</section>
 
 <hr>
 

@@ -13,6 +13,9 @@ angular.module('RedditClone')
     templateUrl: '../partials/createPostPage.html',
     controller: 'postController'
   })
+  .when('/posts/edit', {
+    templateUrl: '../partials/createPostPage.html'
+  })
   .when('/posts/show', {
     templateUrl: '../partials/showOne.html',
     controller: 'singlePostController'
