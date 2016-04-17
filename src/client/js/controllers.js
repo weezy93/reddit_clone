@@ -1,4 +1,5 @@
-app.controller('HomeController', function ($scope) {
+angular.module('RedditClone')
+.controller('HomeController', [ '$scope', function ($scope) {
   $scope.posts = {
     makePost: false,
     searching: false,
@@ -98,4 +99,4 @@ app.controller('HomeController', function ($scope) {
     $scope.posts.postArray[index].comments.push(comment);
   };
 
-});
+}]);
