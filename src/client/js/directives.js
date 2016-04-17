@@ -10,4 +10,10 @@ angular.module('RedditClone')
     restrict: 'E',
     templateUrl: '../directives/searchBar.html'
   }
+})
+.directive('createPostForm', function () {
+  return {
+    restrict: 'E',
+    templateUrl: '../directives/createPostForm.html'
+  }
 });

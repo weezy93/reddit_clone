@@ -1,0 +1,11 @@
+<form name="createPost" id="createPostForm" ng-show="posts.makePost" novalidate ng-submit="action.createPost(postBody)">
+  <label for="username">UserName</label>
+  <input type="text" placeholder="@doge" ng-model="postBody.username" required/>
+<br>
+  <label for="image">Image</label>
+  <input type="text" placeholder="image url" ng-model="postBody.image">
+<br>
+  <textarea ng-model="postBody.body"></textarea>
+<br>
+  <button id="post" type="submit"><i class="fa fa-pencil"></i></button>
+</form>
